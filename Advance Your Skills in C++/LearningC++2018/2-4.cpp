@@ -13,10 +13,22 @@ int main()
     bool gameOver = false;
 
     int chipsInPile = 0;
+    int maxPerTurn;
     int chipsTaken = 0;
 
-    string player1;
-    string player2;
+    // string player1;
+    // string player2;
+
+    int n;
+    cout<<"How many players join? ";
+    cin >> n;
+    string playerNames[n];
+    for (int i=0; i<n; i++)
+    {
+        cout<<"Name of player "<<i+1<<endl;
+        cin>> playerNames[i];
+    }
+    
 
     // seed random number generator
     srand(time(0));
@@ -24,8 +36,10 @@ int main()
     chipsInPile = rand()%MAX_CHIPS +1;
     cout <<"This round will start with "<< chipsInPile<<" chips in the pile"<<endl;
 
-    cout <<"You can only take "<< int(chipsInPile*MAX_TURN) << endl;
-    
-    cout <<"You can only take "<< static_cast<int>(chipsInPile*0.5) << endl;
+    maxPerTurn = chipsInPile*MAX_TURN;
+    cout <<"You can only take up to "<< maxPerTurn << endl;
+
+    chipsTaken = rand()%maxPerTurn +1;
+    cout <<"Your chips taken: "<< chipsTaken << endl;
     return 0;
 }
